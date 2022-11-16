@@ -10,6 +10,18 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-      @items = Item.all
+      @items = Item.page(params[:page])
   end
+  
+  def show
+      @item = Book.find(params[:id])
+  end
+
+  private
+  
+  def item_params
+      params.require(:item).permit(:name, :introduction, :price, :is_active)
+  end
+
+
 end

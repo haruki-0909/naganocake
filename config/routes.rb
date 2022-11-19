@@ -5,14 +5,20 @@ Rails.application.routes.draw do
 
 
   devise_for :customers, skip: [:passwords], controllers: {
-     registrations: "public/registrations",
-     sessions: 'public/sessions'
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
   }
 
-   namespace :admin do
+  namespace :admin do
     resources :items, only: [:new, :index, :create, :show, :edit, :update]
     resources :customers, only: [:index]
   end
-   
+
+ scope module: :public do
+    root to: 'homes#top'
+    get 'about' => 'homes#about', as: :about
+ end
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

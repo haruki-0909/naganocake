@@ -9,7 +9,7 @@
 
         <form class="mx-auto text-center">
           <div class="form-group">
-           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+           <%= form_with model: @customer, url: customer_session_path do |f| %>
             <th class="row field"><%= f.label :メールアドレス %></th>
               <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
           </div>

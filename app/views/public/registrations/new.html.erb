@@ -7,7 +7,7 @@
 
     <div class="text-left col-10">
       <table class="table">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= form_with model: @customer, url: customer_registration_path do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
         <tr class="field">
           <th scope="row">名前</th>
@@ -60,19 +60,19 @@
         <tr class="field">
           <th scope="row">パスワード(6文字以上)</th>
           <% if @minimum_password_length %>
-          <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+          <td><%= f.password_field :encrypted_password, autocomplete: "new-password" %></td>
           <% end %>
         </tr>
 
         <tr class="field">
           <th scope="row">パスワード(確認用)</th>
-          <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+          <td><%= f.password_field :encrypted_password_confirmation, autocomplete: "new-password" %></td>
         </tr>
 
         <tr class="actions">
           <th scope="row"></th>
           <td>
-          <%= f.submit "新規登録",  class: "btn btn-sm btn-success" %>
+          <%= f.submit "新規登録" %>
           </td>
         </tr>
       <% end %>

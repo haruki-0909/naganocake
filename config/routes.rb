@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about', as: :about
 
     get 'customers/mypage' => 'customers#show', as: :public_customer
+    get 'customers/mypage/edit' => 'customers#edit', as: :edit_public_customer
  end
 
 

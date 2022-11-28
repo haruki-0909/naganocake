@@ -8,6 +8,15 @@ class Public::CustomersController < ApplicationController
       @customer = current_customer
   end
 
+  def update
+      @customer = current_customer
+      @customer.update(customer_params)
+      redirect_to public_customer_path
+  end
+  
+  def check
+  end
+
   private
 
   def customer_params

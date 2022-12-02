@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :items, only: [:new, :index, :create, :show, :edit, :update]
-    resources :customers, only: [:index]
+    resources :customers, only: [:index, :show, :edit]
   end
 
  scope module: :public do

@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row">
+      <div class="col-3">
+        <div class="mt-5 mb-5 bg-secondary text-center"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</div>
+      </div>
+      <div class="col-7"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <div>会員ID</div>
+        <div class="mt-4">氏名</div>
+        <div class="mt-4">フリガナ</div>
+        <div class="mt-4">郵便番号</div>
+        <div class="mt-4">住所</div>
+        <div class="mt-4">電話番号</div>
+        <div class="mt-4">メールアドレス</div>
+        <div class="mt-4">会員ステータス</div>
+      </div>
+      <div class="col-4">
+        <div><%= @customer.id %></div>
+        <div class="mt-4"><%= @customer.last_name %>　<%= @customer.first_name %></div>
+        <div class="mt-4"><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></div>
+        <div class="mt-4"><%= @customer.postal_code %></div>
+        <div class="mt-4"><%= @customer.address %></div>
+        <div class="mt-4"><%= @customer.telephone_number %></div>
+        <div class="mt-4"><%= @customer.email %></div>
+        <div class="mt-4"></div>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-2"></div>
+      <div class="col-2">
+            <div>
+                <%= link_to edit_admin_customer_path(customer.id), class: "btn btn-sm btn-success" do %>
+                編集する
+                <% end %>
+            </div>
+        </div>
+      <div class="col-4">
+            <div>
+                <%= link_to about_path, class: "btn btn-sm btn-primary" do %>
+                注文履歴一覧を見る
+                <% end %>
+            </div>
+        </div>
+
+    </div>
+
+</div>

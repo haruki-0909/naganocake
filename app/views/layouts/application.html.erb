@@ -44,30 +44,7 @@
                 ログアウト
                 <% end %>
               </li>
-              <% else %>
-              <li>
-                <%= link_to about_path, class: "nav-link text-dark" do %>
-                About
-                <% end %>
-              </li>
-              <li>
-                <%= link_to about_path, class: "nav-link text-dark" do %>
-                商品一覧
-                <% end %>
-              </li>
-              <li>
-                <%= link_to new_customer_registration_path, class: "nav-link text-dark" do %>
-                新規登録
-                <% end %>
-              </li>
-               <li>
-                <%= link_to new_customer_session_path, class: "nav-link text-dark" do %>
-                ログイン
-                <% end %>
-              </li>
-              <% end %>
-
-              <% if admin_signed_in? %>
+              <% elsif admin_signed_in? %>
               <li>
                 <%= link_to admin_items_path, class: "nav-link text-dark" do %>
                 商品一覧
@@ -105,7 +82,7 @@
                 <% end %>
               </li>
                <li>
-                <%= link_to new_admin_session_path, class: "nav-link text-dark" do %>
+                <%= link_to new_customer_session_path, class: "nav-link text-dark" do %>
                 ログイン
                 <% end %>
               </li>

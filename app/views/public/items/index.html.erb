@@ -1,0 +1,30 @@
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-2">
+        <div class="mt-5 mb-5">
+          <h3>商品一覧</h3>
+        </div>
+      </div>
+      <div class="col-7"></div>
+    </div>
+
+    <% @item.each do |item| %>
+    <tbody class="table-boederless">
+      <tr>
+        <td scope="row">
+          <% if item.image.attached? %>
+          <%= image_tag item.image, size: "180x100" %>
+          <% else %>
+          <%= image_tag 'no_image', size: "180x100" %>
+          <% end %></br>
+          <%= item.name %></br>
+          <%= item.price %>円
+        </td>
+      </tr>
+
+    <% end %>
+    </div>
+  </div>
+</main>

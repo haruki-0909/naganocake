@@ -1,30 +1,29 @@
 <main>
   <div class="container">
-    <div class="row">
-      <div class="col-1"></div>
-      <div class="col-2">
-        <div class="mt-5 mb-5">
-          <h3>商品一覧</h3>
-        </div>
+    <div class="row mt-5 mb-5">
+      <div class="col-3 text-right">
+        <h2>商品一覧</h2>
       </div>
-      <div class="col-7"></div>
+      <div class="col-1 mt-2 text-left">
+        <h5>(全件)</h5>
+      </div>
     </div>
 
-    <% @item.each do |item| %>
-    <tbody class="table-boederless">
-      <tr>
-        <td scope="row">
-          <% if item.image.attached? %>
-          <%= image_tag item.image, size: "180x100" %>
-          <% else %>
-          <%= image_tag 'no_image', size: "180x100" %>
-          <% end %></br>
-          <%= item.name %></br>
-          <%= item.price %>円
-        </td>
-      </tr>
-
-    <% end %>
+    <div class="row">
+      <% @items.each do |item| %>
+      <div class="col-3">
+        <% if item.image.attached? %>
+        <%= image_tag item.image, size: "230x140" %>
+        <% else %>
+        <%= image_tag 'no_image', size: "180x130" %>
+        <% end %></br>
+        <%= link_to item_path(item.id) do %>
+        <%= item.name %>
+        <% end %></br>
+        <%= item.price %>円
+      </div>
+      <% end %>
+      <%= paginate @items %>
     </div>
   </div>
 </main>

@@ -1,0 +1,29 @@
+<main>
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-1"></div>
+      <div class="col-4">
+        <% if @item.image.attached? %>
+        <%= image_tag @item.image, size: "300x200" %>
+        <% else %>
+        <%= image_tag 'no_image', size: "300x200" %>
+        <% end %>
+      </div>
+      <div class="col-3">
+        <h3><%= @item.name %></h3>
+        <div class="mt-4 mb-3"><%= @item.introduction %></div>
+        <h3 class="mt-5">￥<%= @item.add_tax_price.to_s(:delimited) %> (税込)</h3>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-5"></div>
+      <div class="col-3"><%= f.select :amount, *[1..10] %></div>
+      <div class="col-4">
+        <%= link_to edit_admin_item_path(@item.id), class: "btn btn-sm btn-success" do %>
+        カートに入れる
+        <% end %>
+      </div>
+    </div>
+  </div>
+</main>

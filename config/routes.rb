@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     get 'customers/check' => 'customers#check', as: :check_public_customer
     patch 'customers/mypage' => 'customers#update', as: :customer
     
-    resources :items, only: [:index]
+    resources :items, only: [:index, :show]
  end
 
 

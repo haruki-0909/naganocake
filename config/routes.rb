@@ -22,8 +22,9 @@ Rails.application.routes.draw do
     get 'customers/mypage/edit' => 'customers#edit', as: :edit_public_customer
     get 'customers/check' => 'customers#check', as: :check_public_customer
     patch 'customers/mypage' => 'customers#update', as: :customer
-    
+
     resources :items, only: [:index, :show]
+    resources :orders, only: [:new]
  end
 
 

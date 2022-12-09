@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
     resources :items, only: [:index, :show]
     resources :orders, only: [:new]
+    get 'orders/complete' => 'orders#complete', as: :orders_complete
  end
 
 

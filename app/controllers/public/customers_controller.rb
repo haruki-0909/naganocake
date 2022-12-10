@@ -1,7 +1,7 @@
 class Public::CustomersController < ApplicationController
 
   def show
-    @customer = current_customer
+      @customer = current_customer
   end
 
   def edit
@@ -13,7 +13,7 @@ class Public::CustomersController < ApplicationController
       @customer.update(customer_params)
       redirect_to public_customer_path
   end
-  
+
   def check
   end
 

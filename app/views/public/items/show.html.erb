@@ -16,14 +16,22 @@
       </div>
     </div>
 
+    <%= form_with model: @cart_item, url: about_path do |f| %>
     <div class="row mt-5">
       <div class="col-5"></div>
-      <div class="col-3"></div>
-      <div class="col-4">
-        <%= link_to edit_admin_item_path(@item.id), class: "btn btn-sm btn-success" do %>
-        カートに入れる
+      <div class="col-2">
+        <% if customer_signed_in? %>
+        <%= f.hidden_field :customer_id, :value => current_customer.id %>
+        <%= f.select :amount, *[1..10], {include_blank: '個数選択'} %>
         <% end %>
       </div>
+      <div class="col-3">
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <%= f.submit "カートに入れる", class: "btn btn-success" %>
+      </div>
+    </div>
+    <% end %>
+
     </div>
   </div>
 </main>

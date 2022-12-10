@@ -1,0 +1,70 @@
+<main>
+  <div class="container">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-2">
+            <div class="mt-5 mb-4 bg-secondary text-center">ショッピングカート</div>
+        </div>
+        <div class="col-8"></div>
+    </div>
+
+
+    <div class="row mb-4">
+        <div class="col-1"></div>
+        <div class="col-10 text-left">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>商品名</th>
+                  <th>単価(税込)</th>
+                  <th>数量</th>
+                  <th>小計</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <% @cart_items.each do |cart_item| %>
+              <tbody>
+                <tr>
+                  <td class="pt-3">
+                    <% if cart_item.item.image.attached? %>
+                    <%= image_tag cart_item.item.image, size: "80x45" %>
+                    <% else %>
+                    <%= image_tag 'no_image', size: "80x50" %>
+                    <% end %>
+                    <%= cart_item.item.name %>
+                  </td>
+                  <td class="pt-4"><%= cart_item.item.with_tax_price %></td>
+                  <td class="pt-4">
+                    <%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
+                    <%= f.select :amount, *[1..10] %>
+                    <%= f.submit "変更", class: "btn btn-sm btn-success" %>
+                    <% end %>
+                  </td>
+                  <td><%= cart_item.subtotal %></td>
+                  <% @total +=  cart_item.subtotal %>
+                </tr>
+              </tbody>
+              <% end %>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-5">
+        <%= link_to items_path, class: "btn btn-sm btn-primary" do %>
+        買い物を続ける
+        <% end %>
+      </div>
+      <div class="col-3">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+             <td>合計金額</td>
+             <td><%= @total %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>

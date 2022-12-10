@@ -24,7 +24,7 @@
       <div class="col-4">
         <div><%= @item.name %></div>
         <div class="mt-4"><%= @item.introduction %></div>
-        <div class="mt-4"><%= @item.price %> (<%= @item.add_tax_price.to_s(:delimited) %>) 円</div>
+        <div class="mt-4"><%= @item.price %> (<%= @item.with_tax_price %>) 円</div>
       </div>
     </div>
 

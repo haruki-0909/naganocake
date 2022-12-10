@@ -12,11 +12,11 @@
       <div class="col-3">
         <h3><%= @item.name %></h3>
         <div class="mt-4 mb-3"><%= @item.introduction %></div>
-        <h3 class="mt-5">￥<%= @item.add_tax_price.to_s(:delimited) %> (税込)</h3>
+        <h3 class="mt-5">￥<%= @item.with_tax_price %> (税込)</h3>
       </div>
     </div>
 
-    <%= form_with model: @cart_item, url: about_path do |f| %>
+    <%= form_with model: @cart_item, url: cart_items_path do |f| %>
     <div class="row mt-5">
       <div class="col-5"></div>
       <div class="col-2">

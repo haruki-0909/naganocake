@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :order_params, only: [:edit]
+
 
   def new
       @order = Order.new

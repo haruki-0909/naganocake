@@ -1,5 +1,4 @@
 class Public::OrdersController < ApplicationController
-  before_action :order_params, only: [:edit]
 
 
   def new
@@ -8,6 +7,11 @@ class Public::OrdersController < ApplicationController
 
   def confirm
       @order = Order.new(order_params)
+      @cart_items = CartItem.all
+      @total = 0
+  end
+
+  def complete
   end
 
   private

@@ -25,9 +25,9 @@ Rails.application.routes.draw do
 
     resources :items, only: [:index, :show]
     resources :orders, only: [:new]
+    post 'orders/confirm' => 'orders#confirm', as: :orders_confirm
     get 'orders/complete' => 'orders#complete', as: :orders_complete
     resources :cart_items, only: [:index, :create, :update]
-    post 'orders/confirm' => 'orders#confirm', as: :orders_confirm
  end
 
 

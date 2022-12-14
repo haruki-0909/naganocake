@@ -1,1 +1,94 @@
-aaa
+<main>
+  <div class="container">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-2">
+            <div class="mt-5 mb-4 bg-secondary text-center">注文確認画面</div>
+        </div>
+        <div class="col-8"></div>
+    </div>
+
+
+    <div class="row mb-4">
+        <div class="col-8 text-left">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>商品名</th>
+                  <th>単価(税込)</th>
+                  <th>数量</th>
+                  <th>小計</th>
+                </tr>
+              </thead>
+              <% @cart_items.each do |cart_item| %>
+              <tbody>
+                <tr>
+                  <td class="pt-3">
+                    <% if cart_item.item.image.attached? %>
+                    <%= image_tag cart_item.item.image, size: "80x45" %>
+                    <% else %>
+                    <%= image_tag 'no_image', size: "80x50" %>
+                    <% end %>
+                    <%= cart_item.item.name %>
+                  </td>
+                  <td class="pt-4"><%= cart_item.item.with_tax_price %></td>
+                  <td class="pt-4">
+                    <%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
+                    <%= f.select :amount, *[1..10] %>
+                    <%= f.submit "変更", class: "btn btn-sm btn-success" %>
+                    <% end %>
+                  </td>
+                  <td><%= cart_item.subtotal %></td>
+                  <% @total +=  cart_item.subtotal %>
+                </tr>
+              </tbody>
+              <% end %>
+            </table>
+        </div>
+        <div class="col-3 ml-3 pb-4">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+             <td>送料</td>
+             <td>800</td>
+            </tr>
+            <tr>
+             <td>商品合計</td>
+             <td><%= @total %></td>
+            </tr>
+            <tr>
+             <td>請求金額</td>
+             <td><%= @total += 800 %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <h4>支払方法</h4>
+      </div>
+      <div class="col-1 mt-2">
+        <%= @order.payment_type_i18n %>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-2">
+          <h4>お届け先</h4>
+      </div>
+      <div class="col-5 ml-4">
+        〒<%= current_customer.postal_code %>　<%= current_customer.address %></br>
+          <%= current_customer.last_name %><%= current_customer.first_name %>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-4"></div>
+      <div class="col-2">
+        <%= link_to orders_complete_path, class: "btn btn-sm btn-success" do %>
+        注文を確定する
+        <% end %>
+      </div>
+      <div class="col-4"></div>
+    </div>
+  </div>
+</main>

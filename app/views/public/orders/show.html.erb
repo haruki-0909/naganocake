@@ -1,0 +1,75 @@
+<main>
+  <div class="container">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-2">
+            <div class="mt-5 mb-4 bg-secondary text-center">注文履歴詳細</div>
+        </div>
+        <div class="col-8"></div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-6 ml-3 pb-4">
+        <h4>注文情報</h4>
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+             <td>注文日</td>
+             <td></td>
+            </tr>
+            <tr>
+             <td>配送先</td>
+             <td></td>
+            </tr>
+            <tr>
+             <td>支払方法</td>
+             <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-3 ml-3 pb-4">
+        <h4>請求情報</h4>
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+             <td>商品合計</td>
+             <td>800</td>
+            </tr>
+            <tr>
+             <td>配送料</td>
+             <td><%= @total %></td>
+            </tr>
+            <tr>
+             <td>ご請求金額</td>
+             <td><%= @total += 800 %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-8 text-left">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>商品名</th>
+              <th>単価(税込)</th>
+              <th>個数</th>
+              <th>小計</th>
+            </tr>
+          </thead>
+          <% @cart_items.each do |cart_item| %>
+          <tbody>
+            <tr>
+              <td class="pt-3"><%= cart_item.item.name %></td>
+              <td class="pt-4"><%= cart_item.item.with_tax_price %></td>
+              <td class="pt-4"><%= cart_item.amount %></td>
+              <td><%= cart_item.subtotal %></td>
+            </tr>
+          </tbody>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>

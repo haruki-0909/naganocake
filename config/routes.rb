@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
+    root to: 'homes#top'
     resources :items, only: [:new, :index, :create, :show, :edit, :update]
     resources :customers, only: [:index, :show, :edit]
   end
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
     patch 'customers/mypage' => 'customers#update', as: :customer
 
     resources :items, only: [:index, :show]
-    resources :orders, only: [:new]
+    resources :orders, only: [:new, :index, :show]
     post 'orders/confirm' => 'orders#confirm', as: :orders_confirm
     get 'orders/complete' => 'orders#complete', as: :orders_complete
     resources :cart_items, only: [:index, :create, :update]

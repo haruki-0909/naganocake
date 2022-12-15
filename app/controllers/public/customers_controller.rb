@@ -15,12 +15,11 @@ class Public::CustomersController < ApplicationController
   end
 
   def check
-      @customer = Customer.find_by(email: params[:email])
   end
 
   def withdraw
-      @customer = Customer.find_by(email: params[:email])
-      @customer.withdraw(is_deleted: false)
+      @customer = current_customer
+      @customer.update(is_deleted: true)
       reset_session
       redirect_to root_path
   end

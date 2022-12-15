@@ -33,11 +33,11 @@
                     <%= current_customer.last_name %><%= current_customer.first_name %>
                   </td>
                   <td class="pt-4">
-                    <%= @cart_items.item.name %>
+
                   </td>
-                  <td><%= @total +=  @cart_item.subtotal %></td>
+                  <td></td>
                   <td>
-                    <%= link_to order_path(@order_detail.id), class: "btn btn-sm btn-primary" do %>
+                    <%= link_to class: "btn btn-sm btn-primary" do %>
                     表示する
                     <% end %>
                   </td>

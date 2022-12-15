@@ -12,14 +12,14 @@
     <div class="row">
       <% @items.each do |item| %>
       <div class="col-3">
+        <%= link_to item_path(item.id) do %>
         <% if item.image.attached? %>
         <%= image_tag item.image, size: "230x140" %>
         <% else %>
         <%= image_tag 'no_image', size: "180x130" %>
+        <% end %>
         <% end %></br>
-        <%= link_to item_path(item.id) do %>
-        <%= item.name %>
-        <% end %></br>
+        <%= item.name %></br>
         <%= item.price %>円
       </div>
       <% end %>

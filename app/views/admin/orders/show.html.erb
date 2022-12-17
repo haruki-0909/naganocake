@@ -13,48 +13,22 @@
         <div>購入者</div>
         <div class="mt-4">注文日</div>
         <div class="mt-4">配送先</div>
-        <div class="mt-4">支払方法</div>
-      </div>
-      <div class="col-4">
-        <div>購入者</div>
-        <div class="mt-4">注文日</div>
-        <div class="mt-4">配送先</div>
-        <div class="mt-4">支払い方法</div>
-      </div>
-    </div>
-
-    <div class="row mb-4">
-      <div class="col-5 text-left">
-      　<table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>商品名</th>
-              <th>単価(税込)</th>
-              <th>数量</th>
-              <th>小計</th>
-            </tr>
-          </thead>
-          <% @cart_items.each do |cart_item| %>
-          <tbody>
-            <tr>
-              <td class="pt-3"><%= cart_item.item.name %></td>
-              <td class="pt-4"><%= cart_item.item.with_tax_price %></td>
-              <td class="pt-4"><%= cart_item.amount %></td>
-              <td><% @total +=  cart_item.subtotal %></td>
-            </tr>
-          </tbody>
-          <% end %>
-        </table>
-      </div>
-      <div class="col-2">
+        <div class="mt-5">支払方法</div>
         <div class="mt-4">商品合計</div>
         <div class="mt-4">送料</div>
         <div class="mt-4">請求金額</div>
       </div>
       <div class="col-4">
-        <div class="mt-4">注文日</div>
-        <div class="mt-4">配送先</div>
-        <div class="mt-4">支払い方法</div>
+        <div>購入者</div>
+        <div class="mt-4"><%= @order.created_at %></div>
+        <div class="mt-4">
+          〒<%= @order.customer.postal_code %> <%= @order.customer.address %></br>
+          <%= @order.customer.last_name %><%= @order.customer.first_name %>
+        </div>
+        <div class="mt-4"><%= @order.payment_type_i18n %></div>
+        <div class="mt-4"><%= @order.billing_amount %></div>
+        <div class="mt-4"><%= @order.postage %></div>
+        <div class="mt-4"><%= @order.billing_amount + @order.postage %></div>
       </div>
     </div>
   </div>

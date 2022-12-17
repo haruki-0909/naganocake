@@ -26,16 +26,16 @@
       <div class="col">
         <h3 class="mt-2">お届け先</h3>
         <div class="col-3 ml-5 radio-inline">
-          <%= f.radio_button current_customer, :ご自身の住所 %>
-          <%= f.label current_customer, "ご自身の住所" %>
+          <%= f.radio_button :address_number, 1 %>
+          <%= f.label :address_number_1, "ご自身の住所" %>
         </div>
         <div class="col-12 ml-5 pl-5">
           〒<%= current_customer.postal_code %>　<%= current_customer.address %></br>
           <%= current_customer.last_name %><%= current_customer.first_name %>
         </div>
         <div class="col-3 ml-5 mt-2 radio-inline">
-          <%= f.radio_button :new_address, :新しいお届け先 %>
-          <%= f.label :new_address, "新しいお届け先" %>
+          <%= f.radio_button :address_number, 2 %>
+          <%= f.label :address_number_2, "新しいお届け先" %>
         </div>
         <div class="col-6 ml-5 pl-5">
           新しいお届け先(ハイフンなし) <%= f.text_field :postal_code %>

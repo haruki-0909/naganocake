@@ -21,7 +21,7 @@
         <tbody class="table">
           <tr>
             <th scope="row">
-              <%= link_to orders.created_at, admin_order_path(orders.id) %>
+              <%= link_to orders.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(orders.id) %>
             </th>
             <td><%= orders.customer.last_name %><%= orders.customer.first_name %></td>
             <td><%= orders.order_details.sum(:amount) %></td>

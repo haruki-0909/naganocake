@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :items, only: [:new, :index, :create, :show, :edit, :update]
     resources :customers, only: [:index, :show, :edit]
+     resources :orders, only: [:show]
   end
 
  scope module: :public do
@@ -29,7 +30,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     post 'orders/confirm' => 'orders#confirm', as: :orders_confirm
     get 'orders/complete' => 'orders#complete', as: :orders_complete
-    resources :orders, only: [:new, :index, :show, :create]
+    resources :orders, only: [:new, :index, :create, :index, :show]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as: :destroy_all_cart_items
     resources :cart_items, only: [:index, :create, :update, :destroy]
 

@@ -15,23 +15,31 @@ class Public::OrdersController < ApplicationController
   def create
       cart_items = current_customer.cart_items.all
       @order = Order.new(order_params)
-      if　@order.save
-          cart_items.each do |cart|
-          
-      redirect_to orders_complete_path
-      current_customer.cart_items.destroy_all
+      @order.save
+        cart_items.each do |cart|
+        order_detail = OrderDetail.new
+        order_detail.item_id = cart.item_id
+        order_detail.order_id = @order.id
+        order_detail.amount = cart.amount
+        order_detail.tax_price = cart.item.price
+        order_detail.save
+        end
+        redirect_to orders_complete_path
+        current_customer.cart_items.destroy_all
+
   end
 
   def complete
   end
 
   def show
-      @cart_items = CartItem.all
+      @order = Order.find(params[:id])
+      @total = 0
   end
 
   def index
       @orders = Order.all
-      @cart_items = CartItem.all
+      @order_detail = OrderDetail.all
       @total = 0
   end
 

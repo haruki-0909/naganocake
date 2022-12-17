@@ -25,12 +25,12 @@
               <tbody>
                 <tr>
                   <td class="pt-3">
-                    <%= orders.created_at %>
+                    <%= orders.created_at.strftime('%Y/%m/%d') %>
                   </td>
                   <td class="pt-4">
-                    〒<%= current_customer.postal_code %></br>
-                    <%= current_customer.address %></br>
-                    <%= current_customer.last_name %><%= current_customer.first_name %>
+                    〒<%= orders.postal_code %></br>
+                    <%= orders.address %></br>
+                    <%= orders.name %>
                   </td>
                   <td class="pt-4">
                     <% orders.order_details.each do |order_detail| %>

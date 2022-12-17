@@ -20,7 +20,7 @@
       </div>
       <div class="col-4">
         <div>購入者</div>
-        <div class="mt-4"><%= @order.created_at %></div>
+        <div class="mt-4"><%= @order.created_at.strftime('%Y/%m/%d') %></div>
         <div class="mt-4">
           〒<%= @order.customer.postal_code %> <%= @order.customer.address %></br>
           <%= @order.customer.last_name %><%= @order.customer.first_name %>

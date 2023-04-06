@@ -14,7 +14,7 @@ private
     if resource_or_scope.is_a?(Admin)
         admin_root_path
     else
-        root_path
+         public_customer_path
     end
   end
 

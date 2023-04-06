@@ -69,7 +69,7 @@
               <td class="pt-3"><%= order_detail.item.name %></br></td>
               <td class="pt-4"><%= order_detail.tax_price %></td>
               <td class="pt-4"><%= order_detail.amount %></td>
-              <td><%= order_detail.tax_price + order_detail.amount %></td>
+              <td><%= order_detail.tax_price * order_detail.amount %></td>
             </tr>
           </tbody>
           <% end %>

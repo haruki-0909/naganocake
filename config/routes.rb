@@ -16,7 +16,7 @@ Rails.application.routes.draw do
      resources :orders, only: [:show]
   end
 
- scope module: :public do
+  scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about', as: :about
 
@@ -33,8 +33,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :index, :create, :index, :show]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as: :destroy_all_cart_items
     resources :cart_items, only: [:index, :create, :update, :destroy]
-
- end
+  end
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
